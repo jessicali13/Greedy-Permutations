@@ -42,6 +42,26 @@ class Point:
 class WorkingSet:
     """Class for the working set containing a list of points in the greedy permutation"""
 
+    def __init__(self):
+        self.set = [0]
+        self.setsize = 1
+
+    '''
+    Appends the target point to the end of the workingset and increments the set size
+    @param1: Target point
+    '''
+    def addpoint(self, targetpoint):
+        self.set.append(targetpoint)
+        self.setsize += 1
+
+    '''
+    Removes the point in the specified position and returns it
+    @param1: Index number of the target point
+    @return: Target point
+    '''
+    def removepoint(self, targetindex):
+        return self.set.pop(targetindex)
+
 
 class TestGreedySet(unittest.TestCase):
     """Test class for the Point class functions"""
@@ -55,7 +75,6 @@ class TestGreedySet(unittest.TestCase):
         self.assertEqual(testingpoint.pointdistance(testingset[1]), 2)
         self.assertEqual(testingpoint.pointdistance(testingset[2]), math.sqrt(2))
         self.assertEqual(testingpoint.wsetdistance(testingset), math.sqrt(2))
-
 
 
 if __name__ == '__main__':

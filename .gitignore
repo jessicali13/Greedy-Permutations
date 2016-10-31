@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -35,5 +36,5 @@ Icon
 .Spotlight-V100
 .Trashes
 
-# .idea files from PyCharm
+# .idea directory from PyCharm
 .idea
