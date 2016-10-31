@@ -27,7 +27,6 @@ class Point:
     '''
     def wsetdistance(self, workingset):
         smallestdistance = float('inf')
-        tempdistance = 0
 
         for workingpoint in workingset:
             tempdistance = self.pointdistance(workingpoint)
@@ -38,13 +37,12 @@ class Point:
         return smallestdistance
 
 
-# INCOMPLETE CLASS
 class WorkingSet:
     """Class for the working set containing a list of points in the greedy permutation"""
 
     def __init__(self):
-        self.set = [0]
-        self.setsize = 1
+        self.set = []
+        self.setsize = 0
 
     '''
     Appends the target point to the end of the workingset and increments the set size
@@ -60,6 +58,7 @@ class WorkingSet:
     @return: Target point
     '''
     def removepoint(self, targetindex):
+        self.setsize -= 1
         return self.set.pop(targetindex)
 
 
@@ -75,6 +74,21 @@ class TestGreedySet(unittest.TestCase):
         self.assertEqual(testingpoint.pointdistance(testingset[1]), 2)
         self.assertEqual(testingpoint.pointdistance(testingset[2]), math.sqrt(2))
         self.assertEqual(testingpoint.wsetdistance(testingset), math.sqrt(2))
+
+    def test_workingset(self):
+        testwset = WorkingSet()
+        self.assertEqual(testwset.setsize, 0)
+
+        testinglist = [Point(0, 2), Point(2, 0), Point(1, 1), Point(0, 0)]
+        for node in testinglist:
+            testwset.addpoint(node)
+        self.assertEqual(testwset.setsize, 4)
+
+        testingpoint = testwset.set[3]
+        self.assertEqual(testwset.removepoint(3), testingpoint)
+        testingpoint = testwset.set[0]
+        self.assertEqual(testwset.removepoint(0), testingpoint)
+        self.assertEqual(testwset.setsize, 2)
 
 
 if __name__ == '__main__':
