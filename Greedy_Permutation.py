@@ -61,6 +61,7 @@ def user_createnewpoint(x, y, pointlist):
 class TestGreedyPermutation(unittest.TestCase):
     """Testing class for the file"""
 
+    # Test case for greedy algorithm
     def test_greedypermutation(self):
         alist = [Point(-8, 0), Point(1, 0), Point(3, 8), Point(2, 2), Point(1, 9), Point(-1, -4), Point(0, 0)]
         correctlist = [alist[0], alist[2], alist[1], alist[5], alist[3], alist[4], alist[6]]

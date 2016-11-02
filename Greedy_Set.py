@@ -68,7 +68,7 @@ class WorkingSet:
 class TestGreedySet(unittest.TestCase):
     """Test class for the file"""
 
-    # This is the test case for the functions of Point class
+    # Test case for the functions of Point class
     def test_point(self):
         testingset = [Point(0, 2), Point(2, 0), Point(1, 1)]
         testwset = WorkingSet()
@@ -82,7 +82,7 @@ class TestGreedySet(unittest.TestCase):
         self.assertEqual(testingpoint.pointdistance(testingset[2]), math.sqrt(2))
         self.assertEqual(testingpoint.wsetdistance(testwset), math.sqrt(2))
 
-    # This is the test case for the functions of WorkingSet class
+    # Test case for the functions of WorkingSet class
     def test_workingset(self):
         testwset = WorkingSet()
         self.assertEqual(testwset.setsize, 0)
