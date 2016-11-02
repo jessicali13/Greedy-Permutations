@@ -10,22 +10,24 @@ class Point:
         self.y = init_y
         self.wset_dist = -1
 
-    '''
-    Computes the distance between current point and target point.
-    @param1: Target point
-    @return: Real number distance
-    '''
     def pointdistance(self, targetpoint):
+        """
+        Computes the distance between current point and target point.
+        :param targetpoint:
+        :return: The distance between targetpoint and self
+        """
+
         returndist = math.sqrt(((self.x - targetpoint.x) ** 2) + ((self.y - targetpoint.y) ** 2))
         return returndist
 
-    '''
-    Computes the smallest distance between current point and greedy working set
-    then sets the current point's wset_dist to that distance.
-    @param1: Greedy working set, should be a list
-    @return: Real number distance
-    '''
     def wsetdistance(self, workingset):
+        """
+        Computes the smallest distance between current point and greedy working set
+        then sets the current point's wset_dist to that distance.
+        :param workingset:
+        :return: The distance between the workingset and self
+        """
+
         smallestdistance = float('inf')
 
         for workingpoint in workingset:
@@ -44,22 +46,23 @@ class WorkingSet:
         self.set = []
         self.setsize = 0
 
-    '''
-    Appends the target point to the end of the workingset and increments the set size
-    @param1: Target point
-    '''
     def addpoint(self, targetpoint):
+        """
+        Appends the target point to the end of the workingset and increments the set size
+        then increments the set size counter
+        :param targetpoint:
+        """
+
         self.set.append(targetpoint)
         self.setsize += 1
 
-    '''
-    Removes the point in the specified position and returns it
-    @param1: Index number of the target point
-    @return: Target point
-    '''
-    def removepoint(self, targetindex):
+    def removepoint(self, targetpoint):
+        """
+        Removes the target point and decrements the set size counter
+        :param targetpoint:
+        """
         self.setsize -= 1
-        return self.set.pop(targetindex)
+        self.set.remove(targetpoint)
 
 
 class TestGreedySet(unittest.TestCase):
@@ -75,6 +78,7 @@ class TestGreedySet(unittest.TestCase):
         self.assertEqual(testingpoint.pointdistance(testingset[2]), math.sqrt(2))
         self.assertEqual(testingpoint.wsetdistance(testingset), math.sqrt(2))
 
+    # This is the test case for the functions of WorkingSet class
     def test_workingset(self):
         testwset = WorkingSet()
         self.assertEqual(testwset.setsize, 0)
@@ -84,11 +88,13 @@ class TestGreedySet(unittest.TestCase):
             testwset.addpoint(node)
         self.assertEqual(testwset.setsize, 4)
 
-        testingpoint = testwset.set[3]
-        self.assertEqual(testwset.removepoint(3), testingpoint)
-        testingpoint = testwset.set[0]
-        self.assertEqual(testwset.removepoint(0), testingpoint)
+        testwset.removepoint(testinglist[0])
+        self.assertEqual(testwset.setsize, 3)
+        self.assertNotEqual(testwset.set[0], testinglist[0])
+
+        testwset.removepoint(testinglist[1])
         self.assertEqual(testwset.setsize, 2)
+        self.assertNotEqual(testwset.set[0], testinglist[1])
 
 
 if __name__ == '__main__':
