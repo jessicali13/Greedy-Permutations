@@ -3,7 +3,7 @@ from Greedy_Set import Point, WorkingSet
 
 def greedypermutation(pointlist, greedyset):
     """
-    The greedy permutation algorithm, creates ordered set of
+    The greedy permutation algorithm, takes list of unselected points and outputs sorted greedy set
     :param pointlist:
     :param greedyset:
     :return: The completed list ordered by greedy permutation
