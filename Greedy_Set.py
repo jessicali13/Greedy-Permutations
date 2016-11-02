@@ -30,7 +30,7 @@ class Point:
 
         smallestdistance = float('inf')
 
-        for workingpoint in workingset:
+        for workingpoint in workingset.set:
             tempdistance = self.pointdistance(workingpoint)
             if tempdistance < smallestdistance:
                 smallestdistance = tempdistance
@@ -66,17 +66,21 @@ class WorkingSet:
 
 
 class TestGreedySet(unittest.TestCase):
-    """Test class for the Point class functions"""
+    """Test class for the file"""
 
     # This is the test case for the functions of Point class
     def test_point(self):
         testingset = [Point(0, 2), Point(2, 0), Point(1, 1)]
+        testwset = WorkingSet()
+        for a in testingset:
+            testwset.addpoint(a)
+
         testingpoint = Point(0, 0)
 
         self.assertEqual(testingpoint.pointdistance(testingset[0]), 2)
         self.assertEqual(testingpoint.pointdistance(testingset[1]), 2)
         self.assertEqual(testingpoint.pointdistance(testingset[2]), math.sqrt(2))
-        self.assertEqual(testingpoint.wsetdistance(testingset), math.sqrt(2))
+        self.assertEqual(testingpoint.wsetdistance(testwset), math.sqrt(2))
 
     # This is the test case for the functions of WorkingSet class
     def test_workingset(self):
