@@ -46,6 +46,8 @@ def greedypermutation(pointlist, greedyset):
 
 def user_createnewpoint(x, y, pointlist):
     """
+    Takes user coordinate inputs and creates an instance of Point
+    then inserts the instance into the list of unselected points
     :param x:
     :param y:
     :param pointlist:
