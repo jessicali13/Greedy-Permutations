@@ -9,11 +9,12 @@ class Point:
         self.x = init_x
         self.y = init_y
         self.wset_dist = -1
+        self.selected = False
 
     def pointdistance(self, targetpoint):
         """
         Computes the distance between current point and target point.
-        :param targetpoint:
+        :param targetpoint: The target point
         :return: The distance between targetpoint and self
         """
 
@@ -24,7 +25,7 @@ class Point:
         """
         Computes the smallest distance between current point and greedy working set
         then sets the current point's wset_dist to that distance.
-        :param workingset:
+        :param workingset: The current working set
         :return: The distance between the workingset and self
         """
 
@@ -50,7 +51,7 @@ class WorkingSet:
         """
         Appends the target point to the end of the workingset and increments the set size
         then increments the set size counter
-        :param targetpoint:
+        :param targetpoint: The target point
         """
 
         self.set.append(targetpoint)
@@ -59,7 +60,7 @@ class WorkingSet:
     def removepoint(self, targetpoint):
         """
         Removes the target point and decrements the set size counter
-        :param targetpoint:
+        :param targetpoint: The target point
         """
         self.setsize -= 1
         self.set.remove(targetpoint)

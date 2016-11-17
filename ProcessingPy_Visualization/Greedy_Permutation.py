@@ -5,8 +5,8 @@ import unittest
 def greedypermutation(pointlist, greedyset):
     """
     The greedy permutation algorithm, takes WorkingSet of unselected points and outputs sorted WorkingSet
-    :param pointlist:
-    :param greedyset:
+    :param pointlist: The list of unsorted points
+    :param greedyset: The list of sorted points
     :return: The completed list ordered by greedy permutation
     """
 
@@ -45,12 +45,22 @@ def greedypermutation(pointlist, greedyset):
     return greedyset
 
 
+def findminpoints(radius, greedyset):
+    """
+    Select the minimum number of sorted points such that circles with the given radius
+    can encompass all other points of the set
+    :param radius: The user defined radius
+    :param greedyset: The list of sorted points
+    :return:
+    """
+
+
 def user_createnewpoint(x, y, pointlist):
     """
     Takes user coordinate inputs and creates an instance of Point
     then inserts the instance into the list of unselected points
-    :param x:
-    :param y:
+    :param x: x-coordinate
+    :param y: y-coordinate
     :param pointlist:
     """
 
