@@ -1,5 +1,5 @@
 from Greedy_Set import Point, WorkingSet
-import Greedy_Permutation
+from Greedy_Permutation import greedypermutation, user_createnewpoint
 
 
 class ChosenPoint:
@@ -12,8 +12,9 @@ class ChosenPoint:
 def setup():
     size(501, 501)
     frame.setResizable(True)
-    global selected
-    selected = []
+    global pointlist, greedylist
+    pointlist = WorkingSet()
+    greedylist = WorkingSet()
         
         
 def draw():
@@ -21,13 +22,14 @@ def draw():
     rect(0, 0, width, height)
     fill(0x000000)
     line(width / 2, 0, width / 2, height)
-    line(0, height / 2, width, height / 2)
+    line(0, height / 2, width + 1, height / 2)
     
-    for pt in selected:
-        ellipse(pt.x, pt.y, 5, 5)
+    if greedylist.setsize < 1:
+        for pt in pointlist.set:
+            ellipse(pt.x, pt.y, 5, 5)
         
     text(str((mouseX - (width / 2) - 1) / 5) + " , " + str(-(mouseY - (height / 2)) / 5), 20, (height - 30))
 
 
 def mousePressed():
-    selected.append(ChosenPoint(mouseX, mouseY))
+    user_createnewpoint(mouseX, mouseY, pointlist)
