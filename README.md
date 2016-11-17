@@ -5,6 +5,6 @@ Gavin Li & Jessica Li
 
 Course Project intents to visualize the process of finding the greedy permutation of a set of points in 2 dimensional space.
 
-Techology Used:
-python - algorithm
-javascript - visualization
+Technology Used:
+Python - algorithm
+Processing - visualization
