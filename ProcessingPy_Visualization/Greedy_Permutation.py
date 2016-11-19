@@ -45,26 +45,33 @@ def greedypermutation(pointlist, greedyset):
     return greedyset
 
 
-def findminpoints(radius, greedyset):
+def findminset(radius, greedyset):
     """
     Select the minimum number of sorted points such that circles with the given radius
     can encompass all other points of the set
     :param radius: The user defined radius
     :param greedyset: The list of sorted points
-    :return:
     """
 
+    for pt in greedyset:
+        if pt.wset_dist < radius:
+            pt.selected = True
+        else:
+            pt.selected = False
 
-def user_createnewpoint(x, y, pointlist):
+
+def user_createnewpoint(x, y, gridx, gridy, pointlist):
     """
     Takes user coordinate inputs and creates an instance of Point
     then inserts the instance into the list of unselected points
     :param x: x-coordinate
     :param y: y-coordinate
+    :param gridx: x-coordinate of where the dot will be drawn
+    :param gridy: y-coordinate of where the dot will be drawn
     :param pointlist:
     """
 
-    newpoint = Point(x, y)
+    newpoint = Point(x, y, gridx, gridy)
     pointlist.addpoint(newpoint)
 
 
@@ -73,7 +80,8 @@ class TestGreedyPermutation(unittest.TestCase):
 
     # Test case for greedy algorithm
     def test_greedypermutation(self):
-        alist = [Point(-8, 0), Point(1, 0), Point(3, 8), Point(2, 2), Point(1, 9), Point(-1, -4), Point(0, 0)]
+        alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
+                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         correctlist = [alist[0], alist[2], alist[1], alist[5], alist[3], alist[4], alist[6]]
         greedyset = WorkingSet()
         pointlist = WorkingSet()
@@ -83,6 +91,12 @@ class TestGreedyPermutation(unittest.TestCase):
         greedypermutation(pointlist, greedyset)
         for index, point in enumerate(greedyset.set):
             self.assertEqual(greedyset.set[index], correctlist[index])
+
+    # Test case for findminset function
+    def test_findminset(self):
+        alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
+                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+        # This is an unfinished test case
 
 
 if __name__ == '__main__':
