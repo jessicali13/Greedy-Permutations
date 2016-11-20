@@ -53,11 +53,22 @@ def findminset(radius, greedyset):
     :param greedyset: The list of sorted points
     """
 
-    for pt in greedyset:
-        if pt.wset_dist < radius:
+    # CURRENTLY A PLACEHOLDER FUNCTION, THIS IS NOT COMPLETE
+    for pt in greedyset.set:
+        if pt.wset_dist <= radius:
             pt.selected = True
         else:
             pt.selected = False
+
+
+def unselectall(greedyset):
+    """
+    Unselects all the points in the given greedy set
+    :param greedyset: The target greedy set
+    """
+
+    for pt in greedyset.set:
+        pt.selected = False
 
 
 def user_createnewpoint(x, y, gridx, gridy, pointlist):
@@ -90,13 +101,26 @@ class TestGreedyPermutation(unittest.TestCase):
 
         greedypermutation(pointlist, greedyset)
         for index, point in enumerate(greedyset.set):
+            print str(greedyset.set[index].wset_dist)
             self.assertEqual(greedyset.set[index], correctlist[index])
 
     # Test case for findminset function
     def test_findminset(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
-        # This is an unfinished test case
+        k = 5
+        correctans = [True, False, False, True, True, True, True]
+        pointlist = WorkingSet()
+        greedylist = WorkingSet()
+        for a in alist:
+            pointlist.addpoint(a)
+
+        greedypermutation(pointlist, greedylist)
+        findminset(k, greedylist)
+
+        for index, pt in enumerate(greedylist.set):
+            print str(pt.selected)
+            self.assertEqual(pt.selected, correctans[index])
 
 
 if __name__ == '__main__':

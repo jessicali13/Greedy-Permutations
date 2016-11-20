@@ -21,6 +21,7 @@ class Point:
         """
 
         returndist = math.sqrt(((self.x - targetpoint.x) ** 2) + ((self.y - targetpoint.y) ** 2))
+        
         return returndist
 
     def wsetdistance(self, workingset):
@@ -64,8 +65,17 @@ class WorkingSet:
         Removes the target point and decrements the set size counter
         :param targetpoint: The target point
         """
+
         self.setsize -= 1
         self.set.remove(targetpoint)
+        
+    def removeallpoints(self):
+        """
+        Removes all points from the WorkingSet
+        """
+
+        for pt in self.set:
+            self.removepoint(pt)
 
 
 class TestGreedySet(unittest.TestCase):
