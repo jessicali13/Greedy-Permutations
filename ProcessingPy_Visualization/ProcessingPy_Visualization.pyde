@@ -8,7 +8,8 @@ def setup():
     global pointlist, ksize
     pointlist = WorkingSet()
     ksize = int()
-            
+   
+                     
 def draw():
     # Set up the coordinate grid
     background(255)
@@ -18,7 +19,7 @@ def draw():
     # Draw the encompassing circles
     fill(208, 60, 60)
     for ptg in pointlist.set:
-        if ptg.selected == True:
+        if ptg.selected is True:
             ellipse(ptg.vis_x, ptg.vis_y, ksize * 10, ksize * 10)
             
     fill(0)
@@ -33,6 +34,7 @@ def draw():
     # Text box to display coordinates of current mouse location
     text(str((mouseX - (width / 2) - 1) / 5) + " , " + str(-(mouseY - (height / 2)) / 5), 20, (height - 30))
     text("k = " + str(mouseX / 10), 20, (height - 10))
+
 
 def mousePressed():
     user_createnewpoint((mouseX - (width / 2) - 1) / 5, -(mouseY - (height / 2)) / 5, mouseX, mouseY, pointlist)

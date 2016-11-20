@@ -45,6 +45,16 @@ def greedypermutation(pointlist, greedyset):
     return greedyset
 
 
+def unselectall(greedyset):
+    """
+    Unselects all the points in the given greedy set
+    :param greedyset: The target greedy set
+    """
+
+    for pt in greedyset.set:
+        pt.selected = None
+
+
 def findminset(radius, greedyset):
     """
     Select the minimum number of sorted points such that circles with the given radius
@@ -53,22 +63,19 @@ def findminset(radius, greedyset):
     :param greedyset: The list of sorted points
     """
 
-    # CURRENTLY A PLACEHOLDER FUNCTION, THIS IS NOT COMPLETE
+    templist = WorkingSet()
     for pt in greedyset.set:
-        if pt.wset_dist <= radius:
+        templist.addpoint(pt)
+
+    unselectall(templist)
+
+    for pt in templist.set:
+        if pt.selected is None:
             pt.selected = True
-        else:
-            pt.selected = False
 
-
-def unselectall(greedyset):
-    """
-    Unselects all the points in the given greedy set
-    :param greedyset: The target greedy set
-    """
-
-    for pt in greedyset.set:
-        pt.selected = False
+        for spt in templist.set:
+            if pt.pointdistance(spt) <= radius and spt.selected is None:
+                spt.selected = False
 
 
 def user_createnewpoint(x, y, gridx, gridy, pointlist):
@@ -89,7 +96,7 @@ def user_createnewpoint(x, y, gridx, gridy, pointlist):
 class TestGreedyPermutation(unittest.TestCase):
     """Testing class for the file"""
 
-    # Test case for greedy algorithm
+    # Test case for greedy permutation algorithm
     def test_greedypermutation(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
@@ -109,7 +116,6 @@ class TestGreedyPermutation(unittest.TestCase):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         k = 5
-        correctans = [True, False, False, True, True, True, True]
         pointlist = WorkingSet()
         greedylist = WorkingSet()
         for a in alist:
@@ -118,10 +124,24 @@ class TestGreedyPermutation(unittest.TestCase):
         greedypermutation(pointlist, greedylist)
         findminset(k, greedylist)
 
-        for index, pt in enumerate(greedylist.set):
-            print str(pt.selected)
-            self.assertEqual(pt.selected, correctans[index])
+        # PLACEHOLDER TEST CASE || NOT COMPLETE
 
+    # Test case for the unselectall function
+    def test_unselectall(self):
+        alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
+                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+        pointlist = WorkingSet()
+        for a in alist:
+            pointlist.addpoint(a)
+            a.selected = True
+
+        for pt in pointlist.set:
+            self.assertEqual(pt.selected, True)
+
+        unselectall(pointlist)
+
+        for pt in pointlist.set:
+            self.assertEqual(pt.selected, None)
 
 if __name__ == '__main__':
     unittest.main()
