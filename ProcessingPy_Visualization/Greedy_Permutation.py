@@ -73,9 +73,9 @@ def findminset(radius, greedyset):
         if pt.selected is None:
             pt.selected = True
 
-        for spt in templist.set:
-            if pt.pointdistance(spt) <= radius and spt.selected is None:
-                spt.selected = False
+            for spt in templist.set:
+                if pt.pointdistance(spt) <= radius and spt.selected is None:
+                    spt.selected = False
 
 
 def user_createnewpoint(x, y, gridx, gridy, pointlist):
