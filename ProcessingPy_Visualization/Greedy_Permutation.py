@@ -63,17 +63,13 @@ def findminset(radius, greedyset):
     :param greedyset: The list of sorted points
     """
 
-    templist = WorkingSet()
+    unselectall(greedyset)
+
     for pt in greedyset.set:
-        templist.addpoint(pt)
-
-    unselectall(templist)
-
-    for pt in templist.set:
         if pt.selected is None:
             pt.selected = True
 
-            for spt in templist.set:
+            for spt in greedyset.set:
                 if pt.pointdistance(spt) <= radius and spt.selected is None:
                     spt.selected = False
 
