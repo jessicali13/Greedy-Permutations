@@ -120,8 +120,11 @@ class TestGreedyPermutation(unittest.TestCase):
         greedypermutation(pointlist, greedylist)
         findminset(k, greedylist)
 
-        # findminset should have return points (-8,0), (1,9), and (1,0) as the centers of the circles
-        self.assertEqual(
+        # findminset should have return points (-8,0), (1,9), and (1,0) 
+        # (the frist 3 points in greedy permutation) as the centers of the circles
+        correctSelectionVal = [True, True, True, False, False, False, False]
+        for index, point in enumerate(greedyset.set):
+            self.assertEqual(greedylist[index].selected, correctSelectionVal[index])
 
     # Test case for the unselectall function
     def test_unselectall(self):
