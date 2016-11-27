@@ -23,8 +23,8 @@ def greedypermutation(pointlist, greedyset):
         freepoint.wsetdistance(greedyset)
 
     # Begin inserting the rest of the points into the greedy set w/ greedy algorithm (furthest point from set)
-    pointholder = None
     while pointlist.setsize > 0:
+        pointholder = None
         tempdistance = 0
         for freepoint in pointlist.set:
             # Check if current freepoint is further from the set then current pointholder
@@ -95,7 +95,7 @@ class TestGreedyPermutation(unittest.TestCase):
     # Test case for greedy permutation algorithm
     def test_greedypermutation(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
-                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         correctlist = [alist[0], alist[2], alist[1], alist[5], alist[3], alist[4], alist[6]]
         greedyset = WorkingSet()
         pointlist = WorkingSet()
@@ -110,7 +110,7 @@ class TestGreedyPermutation(unittest.TestCase):
     # Test case for findminset function
     def test_findminset(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
-                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         k = 5
         pointlist = WorkingSet()
         greedylist = WorkingSet()
@@ -120,12 +120,16 @@ class TestGreedyPermutation(unittest.TestCase):
         greedypermutation(pointlist, greedylist)
         findminset(k, greedylist)
 
-        # PLACEHOLDER TEST CASE || NOT COMPLETE
+        # findminset should have return points (-8,0), (1,9), and (1,0) 
+        # (the frist 3 points in greedy permutation) as the centers of the circles
+        correctSelectionVal = [True, True, True, False, False, False, False]
+        for index, point in enumerate(greedyset.set):
+            self.assertEqual(greedylist[index].selected, correctSelectionVal[index])
 
     # Test case for the unselectall function
     def test_unselectall(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
-                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         pointlist = WorkingSet()
         for a in alist:
             pointlist.addpoint(a)
