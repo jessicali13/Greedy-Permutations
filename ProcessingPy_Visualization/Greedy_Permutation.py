@@ -95,7 +95,7 @@ class TestGreedyPermutation(unittest.TestCase):
     # Test case for greedy permutation algorithm
     def test_greedypermutation(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
-                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         correctlist = [alist[0], alist[2], alist[1], alist[5], alist[3], alist[4], alist[6]]
         greedyset = WorkingSet()
         pointlist = WorkingSet()
@@ -110,7 +110,7 @@ class TestGreedyPermutation(unittest.TestCase):
     # Test case for findminset function
     def test_findminset(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
-                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         k = 5
         pointlist = WorkingSet()
         greedylist = WorkingSet()
@@ -121,15 +121,15 @@ class TestGreedyPermutation(unittest.TestCase):
         findminset(k, greedylist)
 
         # findminset should have return points (-8,0), (1,9), and (1,0) 
-        # (the frist 3 points in greedy permutation) as the centers of the circles
-        correctSelectionVal = [True, True, True, False, False, False, False]
-        for index, point in enumerate(greedyset.set):
-            self.assertEqual(greedylist[index].selected, correctSelectionVal[index])
+        # (the first 3 points in greedy permutation) as the centers of the circles
+        correctselectionval = [True, True, True, False, False, False, False]
+        for index, point in enumerate(greedylist.set):
+            self.assertEqual(point.selected, correctselectionval[index])
 
     # Test case for the unselectall function
     def test_unselectall(self):
         alist = ([Point(-8, 0, 0, 0), Point(1, 0, 0, 0), Point(3, 8, 0, 0), Point(2, 2, 0, 0), Point(1, 9, 0, 0),
-                   Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
+                  Point(-1, -4, 0, 0), Point(0, 0, 0, 0)])
         pointlist = WorkingSet()
         for a in alist:
             pointlist.addpoint(a)
