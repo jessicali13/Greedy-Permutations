@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CSE 4704 Computation Geometry</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Home</h1>
+        <p>Greedy Perumutations</p>
+
+        <p class="view"><a href="https://github.uconn.edu/jyl11001/Greedy_Permutations">View the Project on GitHub</a></p>
+
+      </header>
+      <section>
+	<body id="learn-page">
+<!-- <script src="src/libraries/jquery-1.9.1.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://p5js.org/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<!-- <div class="wrapper">    -->
+<div id="container" >
+    <section class="left">
+    <div id="exampleDisplay">
+        <div class="ace">
+            <div class="edit_space">
+                <button id="runButton" class="edit_button">run</button>
+                <button id="resetButton" class="reset_button">reset</button>
+
+            </div>
+            <div id="exampleEditor"></div>
+        </div>
+        <div class="frame">
+            <button id="animateButton" class="ctl_button" onclick="change()">animate on</button>
+            <button id="rewindButton" class="ctl_button">rewind</button>
+            <button id="playButton" class="ctl_button">play</button>
+            <button id="pauseButton" class="ctl_button">pause</button>
+            <button id="forwardButton" class="ctl_button">forward</button>
+            <iframe id="exampleFrame" src="examples.html" ></iframe>
+        </div>
+    </div>
+    </section>
+</div>
+
+</div> <!-- end container -->
+<script src="../src/libraries/ace/ace.js"></script>
+<!-- examples.js generates the iframe which hosts the actual p5 code -->
+<script src="../src/examples.js"></script>
+
+<script type="text/javascript">
+    function change() {
+        var elem = document.getElementById("animateButton");
+        if (elem.innerHTML=="animate on") elem.innerHTML = "animate off";
+        else elem.innerHTML = "animate on";
+    }
+</script>
+
+
+        <script>
+	  $(document).ready( function() {
+	  examples.init('ProcessingPy_Visualizatoin/ProcessingPy_Visualization.pyde');
+	  });
+	</script>
+	
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/digbox">digbox</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
