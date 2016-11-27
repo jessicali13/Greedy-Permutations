@@ -9,3 +9,8 @@ Please note that Processing is needed to run the visualization. You can find pro
 Technology Used:
 Python - algorithm
 Processing - visualization
+
+
+### BUGS ###
+> Resizing the application after creating points on the graph gives visual errors -- points do not appear where they should
+on the graph
