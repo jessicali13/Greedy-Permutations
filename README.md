@@ -8,7 +8,7 @@ Please note that Processing is needed to run the visualization. You can find pro
 
 Technology Used:
 
-Python - algorithm
+Python - algorithm \n
 Processing - visualization
 
 
