@@ -7,6 +7,7 @@ Course Project intents to visualize the process of finding the greedy permutatio
 Please note that Processing is needed to run the visualization. You can find processing at: https://processing.org/download/
 
 Technology Used:
+
 Python - algorithm
 Processing - visualization
 
